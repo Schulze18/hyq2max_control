@@ -1,0 +1,20 @@
+hyq2max:
+
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+
+# Joints Position Controllers ---------------------------------------
+  #Left Front Leg ------------
+  HyQ2maxJointsPositionController:
+    type: hyq2max_joints_position_controller/HyQ2maxJointsPositionController
+    left_front_joints: ['lf_haa_joint', 'lf_hfe_joint', 'lf_kfe_joint']
+    left_front_pid: [{p: 600.0, i: 0.00, d: 10.0}, {p: 600.0, i: 0.00, d: 10.0}, {p: 600.0, i: 0.00, d: 10.0}]
+    left_hind_joints: ['lh_haa_joint', 'lh_hfe_joint', 'lh_kfe_joint']
+    left_hind_pid: [{p: 600.0, i: 0.00, d: 10.0}, {p: 600.0, i: 0.00, d: 10.0}, {p: 600.0, i: 0.00, d: 10.0}]
+    right_hind_joints: ['rh_haa_joint', 'rh_hfe_joint', 'rh_kfe_joint']
+    right_hind_pid: [{p: 600.0, i: 0.00, d: 10.0}, {p: 600.0, i: 0.00, d: 10.0}, {p: 600.0, i: 0.00, d: 10.0}]
+    right_front_joints: ['rf_haa_joint', 'rf_hfe_joint', 'rf_kfe_joint']
+    right_front_pid: [{p: 600.0, i: 0.00, d: 10.0}, {p: 600.0, i: 0.00, d: 10.0}, {p: 600.0, i: 0.00, d: 10.0}]
+    pid: {p: 600.0, i: 0.00, d: 10.0}

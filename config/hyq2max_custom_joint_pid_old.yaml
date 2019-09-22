@@ -5,17 +5,15 @@ hyq2max:
     publish_rate: 50
 
 
+
 # Joints Position Controllers ---------------------------------------
   #Left Front Leg ------------
+ 
   lf_haa_joint_controller:
     type: effort_controllers/JointPositionController
     joint: lf_haa_joint
     pid: {p: 600.0, i: 0.00, d: 10.0}
-
-  #lf_haa_joint_controller:
-  #  type: hyq2max_joints_position_controller/HyQ2maxJointsPositionController
-  #  joint: lf_haa_joint
-  #  gain: 600
+  
   #lf_haa_joint_controller:
   #  type: hyq2max_joints_position_controller/HyQ2maxJointsPositionController
   #  joint: lf_haa_joint
@@ -27,16 +25,16 @@ hyq2max:
     joint: lf_hfe_joint
     pid: {p: 600.0, i: 0.00, d: 10.0}
 
-  lf_kfe_joint_controller:
-    type: effort_controllers/JointPositionController
-    joint: lf_kfe_joint
-    pid: {p: 600.0, i: 0.00, d: 10.0}
-
   #lf_kfe_joint_controller:
-  #  type: hyq2max_joints_position_controller/HyQ2maxJointsPositionController
+  #  type: effort_controllers/JointPositionController
   #  joint: lf_kfe_joint
-  #  gain: 600
   #  pid: {p: 600.0, i: 0.00, d: 10.0}
+
+  lf_kfe_joint_controller:
+    type: hyq2max_joints_position_controller/HyQ2maxJointsPositionController
+    joint: lf_kfe_joint
+    gain: 600
+    pid: {p: 600.0, i: 0.00, d: 10.0}
 
 
 
@@ -45,6 +43,7 @@ hyq2max:
     type: effort_controllers/JointPositionController
     joint: lh_haa_joint
     pid: {p: 600.0, i: 0.00, d: 10.0}
+    hue: 'sas'
 
   lh_hfe_joint_controller:
     type: effort_controllers/JointPositionController
