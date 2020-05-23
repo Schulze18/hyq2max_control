@@ -1,5 +1,7 @@
 <launch>
 
+	<!--node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="1 0 0 0 0 0 1 /world /trunk 100" /-->
+
 	<rosparam file="$(find hyq2max_control)/config/hyq2max_custom_joint_pid.yaml" command="load" />
 
 
@@ -25,14 +27,22 @@
   	</node-->
 
   	<node name="hyq_joint_controller_manager" pkg="controller_manager" type="spawner"
-    respawn="false" output="screen" ns="/hyq2max" args="HyQ2maxJointsPositionController"/>
+    respawn="false" output="screen" ns="/hyq2max" args="HyQ2maxJointsPositionController joint_state_controller"/>
 
 
   	 <!-- send fake joint values -->
-  	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-	</node>
+  	<!--node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<param name="publish_frequency" value="50" />
+		<param name="rate" value="50" />
+	</node-->
 
 	<!-- Combine joint values -->
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+		<param name="publish_frequency" value="50" />
+		<param name="rate" value="50" />
+		<remap from="/joint_states" to="/hyq2max/joint_states" />
+	</node>
+
+	<!--node pkg="tf2_ros" type="static_transform_publisher" name="trunk_broadcaster" args="1 0 0 0 0 0 1 world trunk" /-->
 
 </launch>
